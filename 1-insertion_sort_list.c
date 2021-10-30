@@ -8,20 +8,20 @@
  **/
 void swap_left(listint_t *list)
 {
-	listint_t *temp, *head;
+	listint_t *tmp, *head;
 
 	while (list->prev != NULL)
 	{
 		if (list->n < list->prev->n)
 		{
-			temp = list->prev->prev;
+			tmp = list->prev->prev;
 			list->prev->next = list->next;
 			list->next = list->prev;
 			list->prev->prev = list;
-			list->prev = temp;
+			list->prev = tmp;
 			list->next->next->prev = list->next;
-			if (temp != NULL)
-				temp->next = list;
+			if (tmp != NULL)
+				tmp->next = list;
 			head = list;
 			while (head->prev != NULL)
 				head = head->prev;
@@ -39,14 +39,14 @@ void swap_left(listint_t *list)
  **/
 void swap_right(listint_t *l)
 {
-	listint_t *temp, *head;
+	listint_t *tmp, *head;
 
 	tmp = l->prev;
 
 	if (tmp != NULL)
 	{
-		temp->next = l->next;
-		l->next->prev = temp;
+		tmp->next = l->next;
+		l->next->prev = tmp;
 	}
 	else
 		l->next->prev = NULL;
